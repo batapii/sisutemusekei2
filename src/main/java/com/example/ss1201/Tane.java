@@ -8,20 +8,27 @@ import javafx.util.Duration;
 
 import java.nio.file.Paths;
 
-public class Taiyou  extends ImageView {
-    static Image taiyouImage =
-            new Image(Paths.get("C:\\Users\\batap\\IdeaProjects\\sisutemusekei2\\src\\main\\resources\\images\\taiyou.png").toUri().toString());
+//種クラス
+public class Tane extends Subject {
+    static Image taneImage =
+            new Image(Paths.get("C:\\Users\\batap\\IdeaProjects\\sisutemusekei2\\src\\main\\resources\\images\\Tane.png").toUri().toString());
     Timeline timeline;
 
-    Taiyou(){
-        super(taiyouImage);
-        this.setX(0);
-        this.setY(20);
+    Tane(){
+        super(taneImage);
+        this.setX(300);
+        this.setY(300);
         timeline = new Timeline( new KeyFrame(Duration.millis(1000), event -> {move();}));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
     public void move(){
-        setX(getX()+10);
+        setY(getY()-80);
+        notifyObservers();
+    }
+    //種のX座標を変更する
+    public void setPos(double tanpopo_x) {
+        setY(300);
+        setX(tanpopo_x); //種のｘ座標を変更する
     }
 }
